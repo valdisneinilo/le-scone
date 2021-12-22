@@ -1,0 +1,42 @@
+//Font
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=PT+Mono&display=swap');
+$font-principal: 'PT Mono', monospace;
+$font-secundaria: 'Aref Ruqaa', serif;
+
+//cores
+$cor1: #edece4;
+$cor2: #cbc6b9;
+$cor3: #988c77;
+$cor4: #666;
+
+@mixin font-1($size) {
+    font-family: $font-principal;
+    @if $size == 18{
+        font-size: ($size / 16) + em ;
+        line-height: (($size / 3 + $size) / 16) + em;
+    }
+    @else if $size == 24 {
+        font-size: ($size / 16) + em ;
+        line-height: (($size / 3 + $size) / 16) + em;
+    }
+    @else if $size == 36 {
+        font-size: ($size / 16) + em ;
+        line-height: (($size / 3 + $size) / 16) + em;
+    }
+}
+
+@mixin font-2($size) {
+    font-family: $font-secundaria;
+    @if $size == 18{
+        font-size: ($size / 16) + em ;
+        line-height: (($size / 3 + $size) / 16) + em;
+    }
+    @else if $size == 24 {
+        font-size: ($size / 16) + em ;
+        line-height: (($size / 3 + $size) / 16) + em;
+    }
+    @else if $size == 36 {
+        font-size: ($size / 16) + em;
+        line-height: (($size / 3 + $size) / 16) + em;
+    }
+}

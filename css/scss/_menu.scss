@@ -1,0 +1,44 @@
+.menu {
+    margin-top: 120px;
+    margin-bottom: 80px;
+    @include device(small){
+        margin-top: 40px;
+        margin-bottom: 40px;
+    }
+    .menu-item {
+        margin-bottom: 40px;
+        h2 {
+            @include font-2(24);
+            margin-bottom: 1em;
+        }
+        li {
+            @include font-1(18);
+            line-height: 1.9em;
+            span{
+                font-family: $font-secundaria;
+                color: $cor3;
+                margin-right: 10px;
+                font-weight: bold;
+                margin-left: -70px;
+                @include device(small){
+                    margin-left: 0;
+                }
+            }
+        }
+        img{
+            border-radius: 50%;
+            border: 10px solid $cor2;
+            position: absolute;
+            right: 120px;
+            @include device(medium){
+                position: absolute;
+                right: 0;
+            }
+            @include device(small){
+                position: static;
+                margin: 0 auto;
+                width: 40%;
+            } 
+        }
+    }
+}

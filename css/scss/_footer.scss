@@ -1,0 +1,24 @@
+footer {
+    padding: 20px 0;
+    background-color: $cor4;
+    border-left: 55px 50px 5px $cor4;
+    p{
+        color: $cor2;
+        float: right;
+        @include device(small){
+            float: none;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+    }
+    a {
+        img {
+            float: left;
+            @include device(small){
+                float: none;
+                margin: 0 auto;
+            }
+        }
+      
+    }
+}

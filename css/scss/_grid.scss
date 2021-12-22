@@ -1,0 +1,109 @@
+//Box-Sizing
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+// grid variables
+$columns: 12;
+$gutter: 20px;
+$l-device: 1200px;
+$m-device: 760px;
+$s-device: 480px;
+
+//Mixin media-querie
+@mixin device($size) {
+    @if $size == larger {
+        @media screen and (min-width: $l-device) {
+            @content;
+        }
+    }@else if $size == medium {
+        @media screen and (min-width: $m-device) and (max-width: $l-device - 1) {
+            @content;
+        }
+    }@else if $size == small {
+        @media screen and (max-width: $m-device - 1) {
+            @content;
+        }
+    }
+}
+
+// grid function
+@function grid($col, $offset: false) {
+    $width: $col / $columns * 100 + "%";
+    $result: calc(#{$width} - #{$gutter});
+    @if $offset == offset {
+        $gutter: $gutter / 2;
+        $result: calc(#{$width} + #{$gutter});
+    }
+    @return $result;
+}
+
+// grid class
+@for $i from 1 through $columns {
+    .grid-#{$i} {
+        width: grid($i);
+    }
+}
+
+// mixin grid structure
+@mixin grid-structure {
+    float: left;
+    min-height: 1px;
+    margin-left: $gutter / 2;
+    margin-right: $gutter / 2;
+    @include device(small){
+        width: 100%;
+        float: none;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+//selector
+[class^="grid-"] {
+    @include grid-structure;
+}
+
+//offset class
+@for $i from 1 through $columns {
+    .offset-#{$i} {
+        margin-left: grid($i, offset);
+        @extend %offset;
+    }
+}
+
+//responsive offset
+@include device(small){
+    %offset {
+        margin-left: 0;
+    }
+}
+
+//mixin clear-fix
+@mixin clearfix {
+    &::after, &::before{
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+//mixin container
+@mixin container {
+    max-width: $l-device;
+    margin: 0 auto;
+    position: relative;
+    @include device(medium){
+        max-width: $m-device;
+    }
+    @include device(small){
+        max-width: $s-device;
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+.container {
+    @include container;
+    @include clearfix;
+}

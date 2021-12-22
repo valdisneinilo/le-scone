@@ -1,0 +1,40 @@
+body {
+    background-color: $cor1;
+    border: 10px solid $cor2;
+    color: $cor4;
+    @include device(small){
+        border: 3px solid $cor2;
+    }
+}
+
+img {
+    display: block;
+    max-width:  100%;
+}
+
+.titulo {
+    @include font-1(18);
+    text-transform: uppercase;
+    @include device(small){
+        margin-bottom: 40px;
+    }
+    &::after{
+        content: '';
+        display: block;
+        width: 75%;
+        float: right;
+        height: 2px;
+        background-color: $cor4;
+        margin-top: 10px;
+        @include device(medium){
+            width: 65%;
+        }
+        @include device(small){
+            width: 70%
+        }
+    } 
+}
+
+p {
+    @include font-1(18);
+}
